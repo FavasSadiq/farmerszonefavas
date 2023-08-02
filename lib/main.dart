@@ -39,6 +39,39 @@ class _MySplashScreenState extends State<MySplashScreen> {
     );
   }
 }
+// Define FeaturesItems class here
+class FeaturesItems extends StatelessWidget {
+  final String name;
+  final IconData icon;
+  const FeaturesItems({Key? key, required this.name, required this.icon});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Icon(
+          icon,
+          size: 28,
+          color: Colors.orange,
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Text(
+          name,
+          style: TextStyle(
+            fontSize: 10,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class App_bar extends StatelessWidget {
   // ... App_bar code ...
   const App_bar({super.key});
@@ -157,6 +190,7 @@ class App_bar extends StatelessWidget {
           ),
 
 
+
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: .0),
@@ -193,6 +227,27 @@ class App_bar extends StatelessWidget {
             ),
           ),
 
+          SliverToBoxAdapter(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              padding: const EdgeInsets.all(8),
+              height: 80,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                border: Border.all(width: 0.2, color: Colors.orange),
+                borderRadius: BorderRadius.circular(5),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  FeaturesItems(name: "30 MINS POLICY", icon: Icons.timer),
+                  FeaturesItems(name: "TRACEABILITY", icon: Icons.map),
+                  FeaturesItems(name: "LOCAL SOURCING", icon: Icons.agriculture),
+                ],
+              ),
+            ),
+          ),
 
           SliverToBoxAdapter(
             child: Wrap(
@@ -206,7 +261,7 @@ class App_bar extends StatelessWidget {
                       WidgetSpan(
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                         // child: Image.asset('assets/images/map.jpg', width: 50, height: 50),
+                          // child: Image.asset('assets/images/map.jpg', width: 50, height: 50),
                         ),
                       ),
                     ],
